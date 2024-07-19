@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Photo Showcase</title>
+    <style>
+        body {
+          font-family: var(--default-font);
+          font-size: var(--size-normal);
+
+          background-image: url("../assets/img/gray_bg_noise.png");
+          background-repeat:  repeat;
+          background-color: var(--dark-gray);
+          color: var(--white);
+          min-height: 100vh;
+       }
+
+       .home-button {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            padding: 5px 10px; /* Smaller padding */
+            font-size: 14px; /* Smaller font size */
+            cursor: pointer;
+            border: none;
+            border-radius: 5px;
+            background-color: #fff;
+            color: #000;
+            box-shadow: 2px 2px 10px #0005;
+            transition: background-color 0.3s, color 0.3s;
+            z-index: 10; /* Ensure it stays on top */
+        }
+
+        .home-button:hover {
+            box-shadow: 2px 2px 10px #0007;
+        }
+
+        .container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            padding: 100px;
+            padding-top: 50px;
+        }
+
+        .image-card {
+            background-color: #fff;
+            border: 1px solid #ddd;
+            border-radius: 15px;
+            margin: 10px;
+            overflow: hidden;
+            width: 200px;
+            cursor: pointer;
+            box-shadow: 0 2px 5px rgba(31, 30, 30, 0.1);
+            transition: transform 0.2s;
+            height: 241px;
+            display: flex;
+        }
+
+        .image-card img {
+            width: 100%;
+            height: auto;
+            object-fit: cover;
+        }
+
+        .image-card:hover {
+            transform: scale(1.3);
+        }
+
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0, 0, 0, 0.9);
+            justify-content: center;
+            align-items: center;
+        }
+
+        .modal-content {
+            position: relative;
+            width: 80%;
+            max-width: 800px;
+        }
+
+        .modal-content img {
+            width: 100%;
+            border-radius: 5px;
+        }
+
+        .close-button, .back-button {
+            position: absolute;
+            top: 10px;
+            font-size: 20px;
+            color: #fff;
+            cursor: pointer;
+        }
+
+        .close-button {
+            right: 10px;
+        }
+
+        .back-button {
+            left: 10px;
+        }
+
+        .slide-buttons {
+            position: absolute;
+            top: 50%;
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .slide-buttons button {
+            background: none;
+            border: none;
+            color: #fff;
+            font-size: 30px;
+            cursor: pointer;
+            padding: 0 20px;
+        }
+
+        #modalCaption {
+            color: #fff;
+            text-align: center;
+            margin-top: 10px;
+        }
+
+        .footer {
+            margin-top: 50px;
+            text-align: center;
+            font-size: 14px;
+            color: #666;
+        }
+    </style>
+</head>
+<body>
+    <h1 style="display: flex; align-items: center; justify-content: center; padding-top: 50px; font-family: Poppins;  color: #fff;">My Clickz</h1>
+    <button class="home-button" onclick="window.location.href='/'">Back to Home</button>
+
+    <div class="container" id="imageContainer">
+        <!-- Image cards will be generated here -->
+    </div>
+
+    <!-- Fullscreen Modal -->
+    <div class="modal" id="imageModal">
+        <span class="close-button" onclick="closeModal()">×</span>
+        <span class="back-button" onclick="returnToCollection()">← Back to Collection</span> 
+        <div class="slide-buttons">
+            <button onclick="prevImage()">&#9664;</button>
+            <button onclick="nextImage()">&#9654;</button>
+        </div>
+        <div class="modal-content">
+            <img id="modalImage" src=""> 
+            <p id="modalCaption"></p>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <div class="footer">
+        <div>Designed and built by</div>
+        <div>©2024 Fairoz Faisal</div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    <script src="scripts/main.js"></script>
+
+    <!-- Inline Script (for modal functionality) -->
+    <script>
+        document.addEventListener('DOMContentLoaded', (event) => {
+            const imageContainer = document.getElementById('imageContainer');
+            const modal = document.getElementById('imageModal');
+            const modalImage = document.getElementById('modalImage');
+            const modalCaption = document.getElementById('modalCaption');
+            let currentImageIndex = 0;
+
+            // Array of image file names
+            const images = [];
+            for (let i = 1; i <= 28; i++) {
+                images.push({ src: `images/image000${i}.jpeg`, caption: `Image ${i}` });
+            }
+
+            // Dynamically create image cards
+            images.forEach((image, index) => {
+                const card = document.createElement('div');
+                card.className = 'image-card';
+                card.dataset.imgSrc = image.src;
+                card.dataset.imgCaption = image.caption;
+
+                const img = document.createElement('img');
+                img.src = image.src;
+                img.alt = image.caption;
+
+                card.appendChild(img);
+                imageContainer.appendChild(card);
+
+                card.addEventListener('click', () => {
+                    currentImageIndex = index;
+                    modalImage.src = image.src;
+                    modalCaption.textContent = image.caption;
+                    modal.style.display = 'flex';
+                });
+            });
+
+            function closeModal() {
+                modal.style.display = 'none';
+            }
+
+            function prevImage() {
+                currentImageIndex--;
+                if (currentImageIndex < 0) {
+                    currentImageIndex = images.length - 1;
+                }
+                modalImage.src = images[currentImageIndex].src;
+                modalCaption.textContent = images[currentImageIndex].caption;
+            }
+
+            function nextImage() {
+                currentImageIndex++;
+                if (currentImageIndex >= images.length) {
+                    currentImageIndex = 0;
+                }
+                modalImage.src = images[currentImageIndex].src;
+                modalCaption.textContent = images[currentImageIndex].caption;
+            }
+
+            function returnToCollection() {
+                modal.style.display = 'none'; 
+            }
+
+            window.closeModal = closeModal;
+            window.prevImage = prevImage;
+            window.nextImage = nextImage;
+            window.returnToCollection = returnToCollection;
+        });
+    </script>
+</body>
+</html>
