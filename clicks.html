@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Photo Showcase</title>
+    <link rel="stylesheet" href="/css/clicks.css">
+</head>
+<body>
+    <h1 class="title">My Clickz</h1>
+    <button class="home-button" onclick="window.location.href='/'">Back to Home</button>
+
+    <div class="container" id="imageContainer">
+        <!-- Image cards will be generated here -->
+    </div>
+
+    <!-- Fullscreen Modal -->
+    <div class="modal" id="imageModal">
+        <span class="close-button" onclick="closeModal()">×</span>
+        <span class="back-button" onclick="returnToCollection()">← Back to Collection</span> 
+        <div class="slide-buttons">
+            <button onclick="prevImage()">&#9664;</button>
+            <button onclick="nextImage()">&#9654;</button>
+        </div>
+        <div class="modal-content">
+            <img id="modalImage" src=""> 
+            <p id="modalCaption"></p>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <div class="footer">
+        <div>Designed and built by</div>
+        <div>©2024 Fairoz Faisal</div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    <script src="/scripts/clicks.js"></script>
+</body>
+</html>
