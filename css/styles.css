@@ -245,7 +245,7 @@ div {
   position: relative;
   width: var(--folder-width);
   height: calc(var(--folder-width) / 100 * 75);
-  perspective: calc(var(--folder-width) * 5);
+  
 }
 
 .folder_inner_box .document::before,
@@ -446,6 +446,11 @@ div {
   position: relative;
   bottom: 3px;
   right: 5px;
+}
+
+.resume-link:hover {
+  background-color: #cecbcb;
+  border: #cecbcb;
 }
 
 .download-link {
@@ -944,9 +949,11 @@ div {
   margin: -10px 0 0 -10px;
   border: 3px solid rgba(255, 255, 255, 0.3);
   border-radius: 50%;
-  border-top-color: #ff3030; /* Change this to the desired visible color */
-  animation: spinner 0.6s linear infinite;
-  display: none; /* Ensure the spinner is hidden by default */
+  border-top-color: #ff3030;
+  /*Changethistothedesiredvisiblecolor*/animation: spinner 0.6s linear infinite;
+  display: none;
+   /* Ensure the spinner is hidden by default */
+  -webkit-animation: spinner 0.6s linear infinite;
 }
 
 @keyframes spinner {
@@ -1149,10 +1156,24 @@ div {
 }
 
 .btn-primary {
-  background-color: #0056b3;
-  border: none;
+  background-color:#515253;
+  box-shadow: #181818;
 }
 
 .btn-primary:hover {
-  background-color: #004494;
+  background-color: #9ba1a8;
 }
+
+.btn {
+  border: none;
+  border-radius: 5px;
+  padding: 10px 20px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background-color .5s ease;
+  -webkit-transition: background-color .5s ease;
+  -moz-transition: background-color .5s ease;
+  -ms-transition: background-color .5s ease;
+  -o-transition: background-color .5s ease;
+}
+
