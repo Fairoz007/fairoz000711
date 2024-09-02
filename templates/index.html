@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Project Time Tracker</title>
+    <link rel="stylesheet" href="/static/css/styles.css">
+</head>
+<body>
+    <div class="wrapper">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <h2>Time</h2>
+            <div class="weekly-hours">
+                <h3>Total Work Hours</h3>
+                <div id="totalHours">Total hours: 00:00:00</div>
+                <a href="/work">
+                    <button class="btn1"> 
+                        add work
+                    </button>
+                </a>
+            
+            
+        </aside>
+
+        <!-- Main Content -->
+        <main class="content">
+            <header class="content-header">
+                <h1>My timesheets</h1>
+                <button id="startNewButton" class="btn">Start new +</button>
+            </header>
+
+            <!-- Section to Display Projects and Tasks -->
+            <section id="timesheetSection" class="timesheets">
+                <!-- Projects will be dynamically inserted here -->
+            </section>
+        </main>
+    </div>
+    <!-- Modal for Adding New Task -->
+    <div id="modal" class="modal hidden">
+        <div class="modal-content">
+            <span class="close-button" id="closeModal">&times;</span>
+            <h2>Apply new</h2>
+            <form id="taskForm">
+                <div class="input-group">
+                    <label for="work">Work</label>
+                    <select id="work">
+                        <option value="">Search and choose</option>
+                    </select>
+                </div>
+                <div class="input-group">
+                    <label for="description">Description</label>
+                    <input type="text" id="description" placeholder="type..">
+                </div>
+                <div class="input-group">
+                    <label for="type">Work Type</label>
+                    <select id="type">
+                        <option value="Client">Client</option>
+                        <option value="Internal">Internal</option>
+                        <option value="Other">Other</option>
+                    </select>
+                </div>
+                <button type="submit" class="btn btn-save">Save and start</button>
+            </form>
+        </div>
+    </div>
+
+
+
+    <script src="/static/js/script.js"></script>
+</body>
+</html>

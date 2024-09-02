@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add New Work</title>
+    <!-- Link to the CSS file -->
+    <link rel="stylesheet" href="/static/css/work.css">
+</head>
+<body>
+    <!-- Back to home button -->
+    <a href="/">
+        <button class="btn">Back to Home</button>
+    </a>
+    
+    <section class="work-form">
+        <h2>Add New Work</h2>
+        <form id="workForm">  <!-- The ID matches the JS -->
+            <div class="input-group">
+                <label for="workName">Work Name</label>
+                <input type="text" id="workName" placeholder="Enter work name" required>
+            </div>
+            <div class="input-group">
+                <label for="workDescription">Work Description</label>
+                <textarea id="workDescription" placeholder="Enter work description" required></textarea>
+            </div>
+            <div class="input-group">
+                <label for="department">Department</label>
+                <input type="text" id="department" placeholder="Enter department" required>
+            </div>
+            <div class="input-group">
+                <label for="type">Type</label>
+                <select id="type" required>
+                    <option value="" disabled selected>Select type</option>
+                    <option value="Client">Client</option>
+                    <option value="Internal">Internal</option>
+                    <option value="Other">Other</option>
+                </select>
+            </div>
+            <button type="submit" class="btn btn-save">Save Work</button>
+        </form>
+    </section>
+
+    <!-- Link to the JavaScript file -->
+    <script src="/static/js/work.js"></script>
+</body>
+</html>
