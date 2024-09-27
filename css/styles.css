@@ -1178,6 +1178,68 @@ div {
 
 /* Full-Screen Loader Container */
 .loader {
+<<<<<<< HEAD
+  position: fixed;           /* Cover the entire screen */
+  top: 0;
+  left: 0;
+  width: 100vw;              /* Full viewport width */
+  height: 100vh;             /* Full viewport height */
+  background-color: rgb(37, 36, 36);   /* White background for the entire screen */
+  z-index: 9999;             /* Ensure it's above all other elements */
+  display: flex;             /* Use flexbox to center the text */
+  align-items: center;       /* Vertically center the text */
+  justify-content: center;   /* Horizontally center the text */
+}
+
+/* Loader Text Styles */
+.loading07 {
+  display: flex;             /* Display the letters in a row */
+}
+
+.loading07 span {
+  position: relative;
+  font-size: var(--size-h2); /* Use variable for font size */
+  color: #ff3030;             /* Set the text color */
+  font-weight: 400;           /* Set font weight */
+  font-family: var(--pixel-font); /* Use variable font family */
+  margin: 0 5px;             /* Space between letters */
+  margin-top: 10px;          /* Top margin */
+  transition: transform 0.2s; /* Add transition for transform */
+}
+
+/* Loading Animation Styles */
+.loading07 span::after {
+  position: absolute;
+  top: 0;
+  left: 0;
+  content: attr(data-text);
+  color: #ffffff;               /* White color for the animated text */
+  opacity: 0;
+  transform: scale(1.5);
+  animation: loading07 3s infinite; /* 3 seconds for the animation */
+}
+
+/* Animation Delays for Each Letter */
+.loading07 span:nth-child(2)::after { animation-delay: 0.1s; }
+.loading07 span:nth-child(3)::after { animation-delay: 0.2s; }
+.loading07 span:nth-child(4)::after { animation-delay: 0.3s; }
+.loading07 span:nth-child(5)::after { animation-delay: 0.4s; }
+.loading07 span:nth-child(6)::after { animation-delay: 0.5s; }
+.loading07 span:nth-child(7)::after { animation-delay: 0.6s; }
+.loading07 span:nth-child(8)::after { animation-delay: 0.7s; }
+.loading07 span:nth-child(9)::after { animation-delay: 0.8s; }
+
+@keyframes loading07 {
+  0%, 75%, 100% {
+      transform: scale(1.5);
+      opacity: 0;
+  }
+  25%, 50% {
+      transform: scale(1);
+      opacity: 1;
+  }
+}
+=======
   position: fixed;    /* Cover the entire screen */
   top: 0;
   left: 0;
@@ -1213,3 +1275,4 @@ body.loading {
 }
 
 
+>>>>>>> 63b62b6f89c1d0e5810642343ba1e9faf1887c7c
