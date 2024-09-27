@@ -54,3 +54,21 @@ function contactAgain() {
     // Clear the status message
     document.getElementById('status-message').innerHTML = '';
 }
+
+// Add the 'loading' class to the body initially
+document.body.classList.add('loading');
+
+// Ensure 'loading' class is added to body initially
+document.body.classList.add('loading');
+
+// Function to hide the loader after a delay once the page has fully loaded
+window.onload = function() {
+    const loader = document.querySelector('.loader');
+    if (loader) {
+        // Delay hiding the loader by 2 seconds (2000 ms) after page load
+        setTimeout(() => {
+            loader.style.display = 'none'; // Hide the loader
+            document.body.classList.remove('loading'); // Re-enable scrolling
+        }, 500); // Adjust this value to control the delay (2000 ms = 2 seconds)
+    }
+};
