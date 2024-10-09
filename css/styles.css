@@ -1180,11 +1180,13 @@ div {
   left: 0;
   width: 100vw;              /* Full viewport width */
   height: 100vh;             /* Full viewport height */
-  background-color: rgb(37, 36, 36);   /* White background for the entire screen */
+  background-color: rgb(37, 36, 36);   /* Dark background for the entire screen */
   z-index: 9999;             /* Ensure it's above all other elements */
   display: flex;             /* Use flexbox to center the text */
   align-items: center;       /* Vertically center the text */
   justify-content: center;   /* Horizontally center the text */
+  padding: 10px;             /* Add padding for smaller screens */
+  box-sizing: border-box;    /* Ensure padding doesn’t affect the width */
 }
 
 /* Loader Text Styles */
@@ -1192,11 +1194,12 @@ div {
   display: flex;             /* Display the letters in a row */
 }
 
+/* Individual Letters Style */
 .loading07 span {
   position: relative;
   font-size: var(--size-h2); /* Use variable for font size */
-  color: #ff3030;             /* Set the text color */
-  font-weight: 400;           /* Set font weight */
+  color: #ff3030;            /* Set the text color */
+  font-weight: 400;          /* Set font weight */
   font-family: var(--pixel-font); /* Use variable font family */
   margin: 0 5px;             /* Space between letters */
   margin-top: 10px;          /* Top margin */
@@ -1233,5 +1236,30 @@ div {
   25%, 50% {
       transform: scale(1);
       opacity: 1;
+  }
+}
+
+/* Responsive Design */
+/* Small Screens (Max width 600px) */
+@media (max-width: 600px) {
+  .loading07 span {
+    font-size: 24px;         /* Reduce font size for small screens */
+    margin: 0 3px;           /* Reduce spacing between letters */
+  }
+}
+
+/* Medium Screens (Max width 900px) */
+@media (max-width: 900px) {
+  .loading07 span {
+    font-size: 28px;         /* Slightly larger font size for medium screens */
+    margin: 0 4px;           /* Adjust spacing between letters */
+  }
+}
+
+/* Large Screens (Above 900px) */
+@media (min-width: 900px) {
+  .loading07 span {
+    font-size: var(--size-h2);  /* Keep larger font size for large screens */
+    margin: 0 5px;             /* Maintain spacing for larger screens */
   }
 }
