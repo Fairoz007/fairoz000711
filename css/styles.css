@@ -656,9 +656,10 @@ div {
 
 .work_bar {
   margin: 0;
-  border-top-left-radius: 5px;
+  border-top-left-radius: 10px;
   border-top-right-radius: 5px;
   border-bottom: none;
+  border: solid 2px var(--dark-gray);
   height: 40px;
   position: relative;}
 
