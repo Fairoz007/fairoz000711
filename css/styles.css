@@ -31,10 +31,10 @@
   --gray-white: #e7e7e7;
   --dark-gray: #181818;
 
-  --gradient-bg-color: rgb(234, 194, 255);
-  --gradient-top: linear-gradient(0deg, rgba(234, 194, 255, 1) 25%, rgba(146, 234, 254, 1) 88%);
-  --gradient-slanted: linear-gradient(135deg, rgba(234, 194, 255, 1) 25%, rgba(146, 234, 254, 1) 88%);
-  --gradient-left: linear-gradient(90deg, rgba(234, 194, 255, 1) 25%, rgba(146, 234, 254, 1) 88%);
+  --gradient-bg-color: rgb(255, 255, 255);
+  --gradient-top: linear-gradient(158deg, rgb(255, 194, 194) 25%, rgb(254, 146, 146) 88%);
+  --gradient-slanted: linear-gradient(158deg, rgb(255, 194, 194) 25%, rgb(254, 146, 146) 88%);
+  --gradient-left: linear-gradient(158deg, rgb(255, 194, 194) 25%, rgb(254, 146, 146) 88%);
 
   /* Folder icon variables */
   --folder-width: 150px;
@@ -658,9 +658,6 @@ div {
   margin: 0;
   border-top-left-radius: 5px;
   border-top-right-radius: 5px;
-   background: rgb(82, 82, 82); 
-   background: linear-gradient(158deg, rgb(221, 221, 221) 25%, rgb(255, 212, 212) 88%); 
-  border: 2px solid var(--dark-gray);
   border-bottom: none;
   height: 40px;
   position: relative;}
