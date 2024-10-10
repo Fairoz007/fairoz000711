@@ -66,6 +66,6 @@ window.onload = function() {
         setTimeout(() => {
             loader.style.display = 'none'; // Hide the loader
             document.body.classList.remove('loading'); // Re-enable scrolling
-        }, 500); // Adjust this value to control the delay (700 ms = 0.7 seconds)
+        }, 100); // Adjust this value to control the delay (700 ms = 0.7 seconds)
     }
 };
