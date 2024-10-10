@@ -245,7 +245,6 @@ div {
   position: relative;
   width: var(--folder-width);
   height: calc(var(--folder-width) / 100 * 75);
-  
 }
 
 .folder_inner_box .document::before,
@@ -377,14 +376,12 @@ div {
   justify-content: end;
 }
 
-
-
 .about-bar {
   margin: 0;
   display: flex;
   border-top-left-radius: 5px;
   border-top-right-radius: 5px;
-  border:  solid 1px var(--white);
+  border: solid 1px var(--white);
   border-bottom: none;
   height: 35px;
 }
@@ -506,7 +503,7 @@ div {
 }
 
 #skills {
-  margin: 6rem auto 7rem;
+  padding-top: 2rem;
 }
 
 /* music  */
@@ -578,6 +575,7 @@ div {
 
 .tech-stack-heading {
   font-family: var(--pixel-font);
+  margin-bottom: 0.5rem;
   font-size: var(--size-h5);
 }
 
@@ -658,10 +656,11 @@ div {
   margin: 0;
   border-top-left-radius: 10px;
   border-top-right-radius: 5px;
-  border-bottom: none;
   border: solid 2px var(--dark-gray);
+  border-bottom: none;
   height: 40px;
-  position: relative;}
+  position: relative;
+}
 
 .work_content {
   border: 2px solid var(--dark-gray);
@@ -948,7 +947,7 @@ div {
   border-top-color: #ff3030;
   /*Changethistothedesiredvisiblecolor*/animation: spinner 0.6s linear infinite;
   display: none;
-   /* Ensure the spinner is hidden by default */
+  /* Ensure the spinner is hidden by default */
   -webkit-animation: spinner 0.6s linear infinite;
 }
 
@@ -957,8 +956,6 @@ div {
     transform: rotate(360deg);
   }
 }
-
-
 
 .footer {
   text-align: center;
@@ -985,7 +982,7 @@ div {
   }
 
   .work_description {
-    height: 150px;
+    height: 350px;
   }
 }
 
@@ -1152,7 +1149,7 @@ div {
 }
 
 .btn-primary {
-  background-color:#515253;
+  background-color: #515253;
   box-shadow: #181818;
 }
 
@@ -1230,12 +1227,12 @@ div {
 
 @keyframes loading07 {
   0%, 75%, 100% {
-      transform: scale(1.5);
-      opacity: 0;
+    transform: scale(1.5);
+    opacity: 0;
   }
   25%, 50% {
-      transform: scale(1);
-      opacity: 1;
+    transform: scale(1);
+    opacity: 1;
   }
 }
 
@@ -1261,5 +1258,82 @@ div {
   .loading07 span {
     font-size: var(--size-h2);  /* Keep larger font size for large screens */
     margin: 0 5px;             /* Maintain spacing for larger screens */
+  }
+}
+
+/* For larger screens (default) */
+@media screen and (min-width: 1200px) {
+  .work_description {
+    min-height: 200px;
+    max-height: 350px;
+  }
+}
+
+/* For medium screens (between 992px and 1200px) */
+@media screen and (max-width: 992px) {
+  .work_description {
+    height: 350px;
+    font-size: 18px; /* Adjust font size for medium screens */
+    padding: 1rem;
+  }
+}
+
+/* For smaller screens (below 650px) */
+@media screen and (max-width: 650px) {
+  .work_description {
+    height: auto; /* Allow dynamic height for smaller screens */
+    min-height: 170px; /* Adjust minimum height for smaller screens */
+    font-size: 16px; /* Further adjust the font size */
+  }
+}
+
+/* For very small screens (below 400px) */
+@media screen and (max-width: 400px) {
+  .work_description {
+    height: auto;
+    min-height: 150px; /* Reduce min-height for very small screens */
+    font-size: 14px;
+  }
+}
+
+/* For larger screens (above 1200px) */
+@media screen and (min-width: 1200px) {
+  .about-description {
+    padding: 0 25px; /* Keep the same padding as per request */
+    font-size: 1.2rem; /* Slightly larger font size for readability */
+  }
+}
+
+/* For medium screens (between 992px and 1200px) */
+@media screen and (max-width: 1200px) {
+  .about-description {
+    padding: 0 25px; /* Keep padding consistent */
+    font-size: 1rem; /* Same size */
+  }
+}
+
+/* For smaller screens (below 992px) */
+@media screen and (max-width: 992px) {
+  .about-description {
+    padding: 0 25px; /* Consistent padding */
+    font-size: 1rem; /* Keep the font size same as requested */
+  }
+}
+
+/* For even smaller screens (below 650px) */
+@media screen and (max-width: 650px) {
+  .about-description {
+    padding: 0 25px; /* Maintain the padding */
+    font-size: 1rem; /* Keep font size the same */
+    text-align: left; /* Switch to left-align for smaller screens */
+  }
+}
+
+/* For very small screens (below 400px) */
+@media screen and (max-width: 400px) {
+  .about-description {
+    padding: 0 15px; /* Slightly reduce padding for very small screens */
+    font-size: 0.9rem; /* Slightly reduce font size for readability */
+    text-align: left; /* Ensure left-align for small screens */
   }
 }
