@@ -1,0 +1,19 @@
+RewriteEngine On
+
+# Map /server to /server.html
+RewriteRule ^server$ /server.html [L]
+
+# Map /Certificates to /cert.html
+RewriteRule ^Certificates$ /cert.html [L]
+
+# Map /clicks to /clicks.html
+RewriteRule ^clicks$ /clicks.html [L]
+
+# Map /home to /index.html
+RewriteRule ^home$ /index.html [L]
+
+# Optional: Redirect old URLs to new ones (SEO-friendly)
+Redirect 301 /server.html /server
+Redirect 301 /cert.html /Certificates
+Redirect 301 /clicks.html /clicks
+Redirect 301 /index.html /home
