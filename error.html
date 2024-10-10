@@ -2,152 +2,286 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>404 Not Found</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- Normalize CSS -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.css">
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@800&family=Roboto:wght@100;300&display=swap" rel="stylesheet">
+
+  <!-- CSS Styles -->
   <style>
+    /* Variables */
     :root {
-      --default-font: "Gantari", sans-serif;
-      --pixel-font: "Press Start 2P", system-ui;
-
-      /*========== Font weight ==========*/
-      --weight-light: 200;
-      --weight-normal:  300;
-      --weight-semibold: 500;
-      --weight-bold: 700;
-      --weight-big: 900;
-
-      /*========== Font size ==========*/
-      --size-extra-small: 0.9rem;
-      --size-small: 1.2rem;
-      --size-normal:1.5rem; 
-      --size-h5: 2rem ;
-      --size-h4: 2rem ;
-      --size-h3: 3rem ;
-      --size-h2: 4rem ;
-      --size-h1: 5rem;
-
-      /* Font colors */
-      --pink:#ffffff;
-      --light-pink: rgba(234,194,255,1);
-      --purple: #833737;
-      --dark-purple: #b51b1b;
-      --light-blue: rgb(255, 0, 0);
-      --orange: #ff955e;
-      --white: #F3F4F5;
-      --gray-white: #e7e7e7;
-      --dark-gray: #181818;
-
-      --gradient-bg-color:rgb(234,194,255);
-      --gradient-top:linear-gradient(0deg, rgba(234,194,255,1) 25%, rgba(146,234,254,1) 88%);
-      --gradient-slanted: linear-gradient(135deg, rgba(234,194,255,1) 25%, rgba(146,234,254,1) 88%);
-      --gradient-left : linear-gradient(90deg, rgba(234,194,255,1) 25%, rgba(146,234,254,1) 88%);
-      --gradient-bg-color:rgb(234,194,255);
-
-      /* Folder icon variables */
-      --folder-width: 150px;
-      --folder-outline-width: 2px;
-      --folder-angle: -35deg;
+      --bg: #11111b;
+      --red: #ff6778;
+      --green: #afd33d;
+      --blue: #1122ff;
+      --text: var(--red);
     }
 
-    /*=============== BASE ===============*/
-    * {
+    /* Mixins (Note: Mixins and functions are SCSS features and are included here for reference) */
+    /* Converted to CSS where possible */
+
+    /* Base Styles */
+    *, *::after, *::before {
       box-sizing: border-box;
-      padding: 0;
-      margin: 0;
-    }
-
-    html {
-      scroll-behavior: smooth;
-      letter-spacing: 2px;
-    }
-
-    body {
-      font-family: var(--default-font);
-      font-size: var(--size-normal);
-      background-color: var(--dark-gray);
-      color: var(--white);
-      min-height: 100vh;
-    }
-
-    h1,h2,h3,h4,h5 {
-      margin: 0;
-      padding: 0;
-    }
-
-    ul {
-      list-style: none;
-    }
-
-    a {
-      text-decoration: none;
-    }
-
-    button {
       cursor: pointer;
-      border: none;
-      outline: none;
-    }
-
-    img {
-      max-width: 100%;
-      height: auto;
-    }
-
-    div {
-      padding: 0;
       margin: 0;
+      padding: 0;
+    }
+    ::selection {
+      color: var(--bg);
+      background-color: #ff8899; /* Lightened red */
+    }
+    html, body {
+      width: 100%;
+      height: 100%;
+      background-color: var(--bg);
+      color: var(--text);
+      font-size: calc(9px + (22 - 9) * (100vw - 320px) / (1600 - 320));
+      font-family: 'Roboto', sans-serif;
     }
 
-    /*=============== 404 PAGE ===============*/
-    .error-page {
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
+    /* Error Page Styles */
+    .error-body {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+    }
+    .error-body::before {
+      content: '';
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: var(--text);
+      mix-blend-mode: overlay;
+      z-index: 1;
+    }
+    .error-body::after {
+      content: '';
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, var(--bg) 21px, transparent 1%) center,
+                  linear-gradient(var(--bg) 21px, transparent 1%) center,
+                  #fff;
+      background-size: 22px 22px;
+      background-position: center;
+      opacity: 0.2;
+      z-index: 1;
+    }
+    .background {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 0;
+      filter: grayscale(1);
+      mix-blend-mode: luminosity;
+    }
+    .message {
+      position: relative;
+      width: 100%;
+      height: 100%;
       text-align: center;
-      height: 100vh;
+      z-index: 3;
+    }
+    .message h1 {
+      position: absolute;
+      top: 10%;
+      left: 0;
+      width: 100%;
+      font-size: 10em;
+      margin: 0;
+      animation: shake 600ms ease-in-out infinite alternate;
+      text-shadow: 0 0 0.07em var(--text), -0.2em 0 2em rgba(255, 103, 120, 0.3), 0.2em 0 2em rgba(255, 103, 120, 0.3);
+      user-select: none;
+    }
+    .message h1::before {
+      content: attr(t);
+      position: absolute;
+      left: 50%;
+      transform: translate(-50%, 0.34em);
+      height: 0.1em;
+      line-height: 0.5em;
+      width: 100%;
+      animation: scan 500ms ease-in-out infinite alternate, glitch-anim 300ms ease-in-out infinite alternate;
+      overflow: hidden;
+      opacity: 0.7;
+    }
+    .message h1::after {
+      content: attr(t);
+      position: absolute;
+      top: -15px;
+      left: 50%;
+      transform: translate(-50%, 0.34em);
+      height: 0.5em;
+      line-height: 0.1em;
+      width: 100%;
+      animation: scan 665ms ease-in-out infinite alternate, glitch-anim 300ms ease-in-out infinite alternate;
+      overflow: hidden;
+      opacity: 0.8;
+    }
+    .bottom {
+      position: absolute;
+      top: 65%;
+      left: 0;
+      width: 100%;
+    }
+    .message p,
+    .message a {
+      font-size: 2em;
+      font-family: monospace;
+      text-shadow: 0 0 5px var(--text);
+      filter: blur(0.8px);
+    }
+    .message a {
+      position: relative;
+      color: var(--text);
+      text-decoration: none;
+      font-weight: 700;
+      border: 2px solid var(--text);
+      text-transform: uppercase;
+      padding: 5px 30px;
+      box-shadow: inset 0 0 0 0 rgba(255, 103, 120, 0.2);
+      transition: 25ms ease-in-out all 0ms;
+      overflow: hidden;
+      animation: attn 3s ease-in-out infinite;
+    }
+    .message a:hover {
+      cursor: pointer;
+      box-shadow: inset 0 -2em 0 0 rgba(255, 103, 120, 0.2);
+      transition: 225ms ease-in-out all 225ms;
+      animation: none;
+    }
+    .message a:active {
+      box-shadow: inset 0 -2em 0 0 rgba(255, 103, 120, 0.5);
+      transition: 225ms ease-in-out all 225ms;
+    }
+    .message a::before,
+    .message a::after {
+      content: '';
+      position: absolute;
+      left: 50%;
+      transform: translate(-50%, 0) scale(1, 1);
+      transform-origin: center;
+      background-color: var(--bg);
+      width: 90%;
+      height: 5px;
+      transition: 225ms ease-in-out all;
+      mix-blend-mode: hard-light;
+    }
+    .message a::before {
+      top: -4px;
+    }
+    .message a::after {
+      bottom: -4px;
     }
 
-    .error-page h1 {
-      font-size: var(--size-h1);
-      font-weight: var(--weight-bold);
-      color: var(--light-blue);
-      font-family: var(--pixel-font);
+    /* Keyframes */
+    @keyframes scan {
+      0%,
+      20%,
+      100% {
+        height: 0;
+        transform: translate(-50%, 0.44em);
+      }
+      10%,
+      15% {
+        height: 1em;
+        line-height: 0.2em;
+        transform: translate(-55%, 0.15em);
+      }
     }
-
-    .error-page h2 {
-      font-size: var(--size-h2);
-      font-weight: var(--weight-semibold);
-      color: var(--pink);
+    @keyframes attn {
+      0%,
+      100% {
+        opacity: 1;
+      }
+      30%,
+      35% {
+        opacity: 0.4;
+      }
     }
-
-    .error-page p {
-      font-size: var(--size-normal);
-      margin: 20px 0;
+    @keyframes shake {
+      0%,
+      100% {
+        transform: translate(-1px, 0);
+      }
+      10% {
+        transform: translate(2px, 1px);
+      }
+      30% {
+        transform: translate(-3px, 2px);
+      }
+      35% {
+        transform: translate(2px, -3px);
+        filter: blur(4px);
+      }
+      45% {
+        transform: translate(2px, 2px) skewY(-8deg) scale(0.96, 1);
+        filter: blur(0);
+      }
+      50% {
+        transform: translate(-3px, 1px);
+      }
     }
-
-    .error-page a {
-      font-size: var(--size-normal);
-      font-weight: var(--weight-bold);
-      color: var(--light-blue);
-      border: 2px solid var(--light-blue);
-      padding: 10px 20px;
-      border-radius: 5px;
-      transition: background-color 0.3s, color 0.3s;
-    }
-
-    .error-page a:hover {
-      background-color: var(--light-blue);
-      color: var(--dark-gray);
+    @keyframes glitch-anim {
+      0% {
+        clip: rect(45px, 9999px, 5px, 0);
+      }
+      10% {
+        clip: rect(15px, 9999px, 85px, 0);
+      }
+      20% {
+        clip: rect(25px, 9999px, 15px, 0);
+      }
+      30% {
+        clip: rect(55px, 9999px, 65px, 0);
+      }
+      40% {
+        clip: rect(65px, 9999px, 25px, 0);
+      }
+      50% {
+        clip: rect(35px, 9999px, 45px, 0);
+      }
+      60% {
+        clip: rect(85px, 9999px, 35px, 0);
+      }
+      70% {
+        clip: rect(25px, 9999px, 55px, 0);
+      }
+      80% {
+        clip: rect(15px, 9999px, 75px, 0);
+      }
+      90% {
+        clip: rect(45px, 9999px, 85px, 0);
+      }
+      100% {
+        clip: rect(75px, 9999px, 15px, 0);
+      }
     }
   </style>
 </head>
 <body>
-  <div class="error-page">
-    <h1>404</h1>
-    <h2>Page Not Found</h2>
-    <p>Sorry, the page you are looking for does not exist.</p>
-    <a href="/">Go to Homepage</a>
-  </div>
+  <section class="error-body">
+    <!-- Video Background -->
+    <video preload="auto" class="background" src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/396624/err.mp4" autoplay muted loop></video>
+    <div class="message">
+      <h1 t="404">404</h1>
+      <div class="bottom">
+        <p>You have lost your way</p>
+        <a href="/">Return Home</a>
+      </div>
+    </div>
+  </section>
 </body>
 </html>

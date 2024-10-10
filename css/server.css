@@ -1,11 +1,24 @@
 /* server.css */
 
+/* Define CSS Variables */
+:root {
+  --default-font: 'Arial, sans-serif';
+  --size-normal: 16px;
+  --white: #ffffff;
+  --black: #000000;
+  --background-color: #121212; /* Dark background */
+  --text-color: #e0e0e0;       /* Light gray text */
+  --primary-color: #1e90ff;    /* Dodger Blue */
+  --secondary-color: #ff6347;  /* Tomato */
+  --accent-color: #ffb74d;     /* Orange accent */
+}
+
 /* General Styles */
 body {
   font-family: var(--default-font);
   font-size: var(--size-normal);
-  background-image: url("gray_bg_noise.png");
-  color: var(--white);
+  background-color: var(--background-color);
+  color: var(--text-color);
   min-height: 100vh;
 }
 
@@ -24,23 +37,33 @@ body {
 .intro-greeting {
   font-family: 'Press Start 2P', cursive;
   font-size: 2rem;
-  color: #007bff;
+  color: var(--primary-color);
   margin-bottom: 1rem;
 }
 
 .intro-name .name-highlight {
   font-size: 3rem;
-  color: #28a745;
+  color: var(--secondary-color);
 }
 
 .intro-position {
   font-size: 1.5rem;
-  color: #6c757d;
+  color: var(--accent-color);
   margin-bottom: 2rem;
 }
 
 .navigation-btn {
   font-size: 0.875rem;
+  color: var(--text-color);
+  background-color: var(--primary-color);
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 0.25rem;
+  transition: background-color 0.3s ease;
+}
+
+.navigation-btn:hover {
+  background-color: var(--secondary-color);
 }
 
 .details-section {
@@ -58,35 +81,37 @@ body {
 }
 
 .detail-box {
-  background-color: #ffffff;
+  background-color: #1f1f1f;
   border-radius: 0.5rem;
-  box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075);
+  box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.75);
   padding: 1.5rem;
   text-align: center;
   flex-grow: 1;
   transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+  color: var(--text-color);
 }
 
 .detail-box:hover {
   transform: translateY(-0.5rem);
-  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
+  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.85);
 }
 
 .detail-box h3 {
   font-size: 1.25rem;
   margin-bottom: 1rem;
-  color: #343a40;
+  color: var(--primary-color);
 }
 
 .detail-box p {
   font-size: 1rem;
-  color: #6c757d;
+  color: var(--text-color);
 }
 
 .footer-container {
-  color: #ffffff;
+  color: var(--text-color);
   padding: 1rem 0;
   text-align: center;
+  background-color: #1a1a1a;
 }
 
 .footer-content {
@@ -95,6 +120,6 @@ body {
 
 @media (max-width: 767.98px) {
   .detail-box {
-      margin-bottom: 1rem;
+    margin-bottom: 1rem;
   }
 }

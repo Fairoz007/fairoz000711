@@ -1,37 +1,59 @@
-/* Global Styles */
-body {
-    background: #24282f;
-    font-family: 'Alegreya Sans', sans-serif;
+/* server.css */
+
+/* Define CSS Variables */
+:root {
+    --default-font: 'Alegreya Sans', sans-serif;
+    --size-normal: 16px;
+    --white: #ffffff;
+    --black: #000000;
+    --background-color: #24282f; /* Dark background */
+    --text-color: #ccc;          /* Light gray text */
+    --primary-color: #ff6600;    /* Orange */
+    --secondary-color: #ff9933;  /* Lighter Orange */
+    --accent-color: #ffffff;     /* White */
+  }
+  
+  /* Global Styles */
+  * {
+    font-family: var(--default-font);
+    box-sizing: border-box;
+  }
+  
+  body {
     margin: 0;
     padding: 0;
-}
-
-.wrapper {
+    background-color: var(--background-color);
+    color: var(--text-color);
+    font-size: var(--size-normal);
+    min-height: 100vh;
+  }
+  
+  .wrapper {
     padding: 15px;
-}
-
-h2 {
+  }
+  
+  h2 {
     text-align: center;
-    color: #ccc;
+    color: var(--text-color);
     margin: 20px 0;
-}
-
-h2 strong {
-    background-color: #24282f;
+  }
+  
+  h2 strong {
+    background-color: var(--background-color);
     padding: 5px 10px;
     border-radius: 5px;
-    color: #fff;
-}
-
-.cards {
+    color: var(--white);
+  }
+  
+  .cards {
     display: flex;
     flex-flow: row wrap;
     justify-content: center;
     gap: 20px;
-}
-
-/* Card Styles */
-.card {
+  }
+  
+  /* Card Styles */
+  .card {
     position: relative;
     width: 180px;
     height: 270px;
@@ -41,16 +63,16 @@ h2 strong {
     transform-style: preserve-3d;
     transition: transform 0.3s ease;
     cursor: pointer;
-}
-
-.card img {
+  }
+  
+  .card img {
     width: 100%;
     height: 100%;
     object-fit: cover;
     border-radius: 10px;
-}
-
-.card:after {
+  }
+  
+  .card:after {
     position: absolute;
     content: '';
     z-index: 10;
@@ -62,73 +84,78 @@ h2 strong {
     transform: rotate(45deg);
     background: linear-gradient(to top, transparent, #fff 15%, rgba(255, 255, 255, 0.5));
     transition: 0.3s;
-}
-
-.card:hover, .card:focus, .card:active {
+  }
+  
+  .card:hover,
+  .card:focus,
+  .card:active {
     box-shadow: 0 8px 16px 3px rgba(0, 0, 0, 0.6);
     transform: translateY(-3px) scale(1.05) rotateX(15deg);
-}
-
-.card:hover:after, .card:focus:after, .card:active:after {
+  }
+  
+  .card:hover:after,
+  .card:focus:after,
+  .card:active:after {
     transform: rotate(25deg);
     top: -40%;
     opacity: 0.15;
-}
-
-/* Back Button Styles */
-.back-button {
+  }
+  
+  /* Back Button Styles */
+  .back-button {
     margin-bottom: 20px;
     display: inline-block;
     padding: 10px 20px;
     font-size: 16px;
-    color: #fff;
+    color: var(--white);
     background-color: rgb(111, 117, 116);
     border: none;
     border-radius: 5px;
     cursor: pointer;
     transition: background-color 0.3s ease;
-}
-
-.back-button:hover {
+  }
+  
+  .back-button:hover {
     background-color: rgb(82, 85, 82);
-}
-
-/* Responsive Design */
-/* For smaller screens (Tablets and Smartphones) */
-@media screen and (max-width: 768px) {
+  }
+  
+  /* Responsive Design */
+  /* For smaller screens (Tablets and Smartphones) */
+  @media screen and (max-width: 768px) {
     .card {
-        width: 150px;
-        height: 225px;
+      width: 150px;
+      height: 225px;
     }
-    
+  
     h2 {
-        font-size: 1.5em;
+      font-size: 1.5em;
     }
-
+  
     .back-button {
-        font-size: 14px;
-        padding: 8px 16px;
+      font-size: 14px;
+      padding: 8px 16px;
     }
-}
-
-/* For very small screens (Smartphones) */
-@media screen and (max-width: 480px) {
+  }
+  
+  /* For very small screens (Smartphones) */
+  @media screen and (max-width: 480px) {
     .card {
-        width: 120px;
-        height: 180px;
+      width: 120px;
+      height: 180px;
     }
-
+  
     h2 {
-        font-size: 1.2em;
+      font-size: 1.2em;
     }
-
+  
     .back-button {
-        font-size: 12px;
-        padding: 6px 12px;
+      font-size: 12px;
+      padding: 6px 12px;
     }
-
+  
     /* Adjust spacing between cards */
     .cards {
-        gap: 15px;
+      gap: 15px;
     }
-}
+  }
+  
